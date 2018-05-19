@@ -1,0 +1,23 @@
+version: "3"
+services:
+  master:
+    networks:
+      - nw_spark
+    image: kron24rus/sparklab:sparklogs
+    ports:
+      - "9000:9000"
+      - "1234:8080"
+      - "4040:4040"
+      - "7077:7077"
+    volumes:
+      - "/usr/local/app/result:/usr/local/app/result"
+
+  slave:
+    networks:
+      - nw_spark
+    image: kron24rus/sparklab:sparklogs
+    ports:
+      - "9001:9001"
+
+networks:
+  nw_spark:
